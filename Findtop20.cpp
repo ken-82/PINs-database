@@ -14,12 +14,12 @@ using pii = pair<int,int>;
 #define s second
 
 int constexpr DIG = 8;
+int constexpr HD = 50;
 int constexpr pow_10[] = {1,10,100,1000,10000,100000,1000000,10000000,100000000};
 
 int constexpr N = pow_10[DIG];
 int cnt[N];
 
-//this is mainly for DIG = 8 only
 int main(){
     string path = "HIBP "+to_string(DIG)+" digit.txt";
     ifstream fin(path);
@@ -36,12 +36,16 @@ int main(){
     vector<pii> vc;
     for(int i{};i < N;i++) vc.emplace_back(cnt[i],i);
     cout << "Finished placing to vc\n";
-    int hd = min(20,(int)vc.size());
+    int hd = min(HD,(int)vc.size());
     nth_element(vc.begin(),vc.begin()+hd,vc.end(),greater<pii>());
     sort(vc.begin(),vc.begin()+hd,greater<pii>());
+    string pathout = "HIBP_"+to_string(DIG)+"_top"+to_string(hd)+".txt";
+    ofstream fout(pathout);
     for(int i{};i < hd;i++){
-        cout << setw(DIG) << setfill('0') << vc[i].s;
-        cout << " : " << vc[i].f << '\n';
+        fout << "Top " << i+1 << " : ";
+        fout << setw(DIG) << setfill('0') << vc[i].s;
+        fout << " - " << vc[i].f << '\n';
     }
+    cout << "Finished all process";
 }
 //g++ .\Findtop20.cpp -o Findtop20.exe
