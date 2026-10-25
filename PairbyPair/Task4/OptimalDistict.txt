@@ -1,0 +1,5 @@
+3 Digits : 849
+4 Digits : 4938
+5 Digits : 64938
+6 Digits : 649372
+8 Digits : 57493862
