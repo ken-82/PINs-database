@@ -13,7 +13,7 @@ using pii = pair<int,int>;
 #define f first
 #define s second
 
-int constexpr DIG = 8;
+int constexpr DIG = 3;
 int constexpr pow_10[] = {1,10,100,1000,10000,100000,1000000,10000000,100000000};
 
 int constexpr N = pow_10[DIG];
